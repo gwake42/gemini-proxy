@@ -37,7 +37,7 @@ def ask_model(prompt: Prompt):
     }
 
     full_prompt = f"""
-You are a helpful assistant trained on MapsIndoors. Use the following context to guide your answers.
+You are a helpful assistant trained on MapsIndoors. Use the following context to guide your answers. If you do not know the answer, ask the user for more information. 
 
 Context:
 {mapsindoors_text}
