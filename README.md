@@ -16,6 +16,7 @@ A FastAPI-powered proxy that forwards requests to the Gemini API (Google’s LLM
 
 ## 📦 Project Structure
 
+```bash
 gemini-proxy/
 ├── main.py              # FastAPI app
 ├── mapsindoors.txt      # (Optional) Context injected into prompts
