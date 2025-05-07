@@ -37,13 +37,13 @@ def ask_model(prompt: Prompt):
     }
 
     full_prompt = f"""
+User query:
+{prompt.prompt}
+
 You are a helpful assistant trained on MapsIndoors. Use the following context to guide your answers. If you do not know the answer, ask the user for more information. 
 
 Context:
 {mapsindoors_text}
-
-User query:
-{prompt.prompt}
 """
 
     payload = {
