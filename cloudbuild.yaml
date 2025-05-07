@@ -1,0 +1,23 @@
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/gemini-proxy', '.']
+
+  # Step 2: Push the image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/gemini-proxy']
+
+  # Step 3: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      [
+        'run', 'deploy', 'gemini-proxy',
+        '--image', 'gcr.io/$PROJECT_ID/gemini-proxy',
+        '--region', 'us-central1',
+        '--allow-unauthenticated',
+        '--platform', 'managed'
+      ]
+
+images:
+  - 'gcr.io/$PROJECT_ID/gemini-proxy'
